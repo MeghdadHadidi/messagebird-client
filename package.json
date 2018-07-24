@@ -1,0 +1,19 @@
+{
+  "name": "messagebird-sms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/meghdad.1987/messagebird-sms.git"
+  },
+  "author": "Meghdad Hadidi (meghdad.1987@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/meghdad.1987/messagebird-sms/issues"
+  },
+  "homepage": "https://gitlab.com/meghdad.1987/messagebird-sms#README"
+}
