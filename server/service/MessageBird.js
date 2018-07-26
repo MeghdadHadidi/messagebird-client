@@ -4,18 +4,47 @@ const axiosInstance = axios.create({
     baseURL: 'https://rest.messagebird.com'
 })
 
-class Messagebird {
-    constructor(accessKey){
-        axiosInstance.defaults.headers.common['Authorization'] = 'AccessKey ' + accessKey
-    }
+function Messagebird(accessKey) {
+    axiosInstance.defaults.headers.common['Authorization'] = 'AccessKey ' + accessKey
 
-    balance(){
-        return {
-            read: () => {
-                axiosInstance.get('/balance')
-                    .then((response) => {
-                        console.log(JSON.stringify(response, null, 2))
-                    })
+    /**
+     * MessageBird services object
+     * @returns {Object}
+     */
+    return {
+        balance: {
+            /**
+             * Get balance service method
+             * @returns {Promise<any>}
+             */
+            get(){
+                return axiosInstance.get('/balance')
+            }
+        },
+
+        messages: {
+            /**
+             * Get messages service method
+             * @returns {Promise<any>}
+             * @param {id} #Optional
+             */
+            get(id){
+                if(!id){
+                    return axiosInstance.get('/messages')
+                }
+
+                else {
+                    return axiosInstance.get(`/messages/${id}`)
+                }
+            },
+
+            /**
+             * Sends message 
+             * @returns {Promise<any>}
+             * @param {Object}
+             */
+            send(message){
+                return axiosInstance.post('/messages', message)
             }
         }
     }
