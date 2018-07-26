@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"cd client && npm start\" \"cd server && npm start\""
+    "start": "concurrently \"cd client && npm start\" \"cd server && npm start\"",
+    "test-server": "cd server && npm run test"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://gitlab.com/meghdad.1987/messagebird-sms/issues"
   },
-  "homepage": "https://gitlab.com/meghdad.1987/messagebird-sms#README"
+  "homepage": "https://gitlab.com/meghdad.1987/messagebird-sms#README",
+  "dependencies": {
+    "concurrently": "^3.6.1"
+  }
 }
