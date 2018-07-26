@@ -8,7 +8,8 @@ class App extends Component {
     messagesCount: null,
     balance: null,
     selectedMessage: null,
-    loading: false
+    loading: false,
+    sent: false
   }
 
   componentDidMount(){
@@ -62,14 +63,22 @@ class App extends Component {
   }
 
   sendMessage = () => {
-    axios.post('/api/messages', {})
-      .then(({ data }) => {
-        console.log(data)
-      })
+    axios.post('/api/messages', {
+      'originator': 'MessageBird', 
+      'recipients': 989126036931, 
+      'body': 'This is a test message.'
+    })
+    .then(({ data }) => {
+      if(data.success){
+        this.setState({
+          sent: true
+        })
+      }
+    })
   }
 
   render() {
-    const { balance, loading, messagesCount } = this.state
+    const { balance, loading, messagesCount, sent } = this.state
     return (
       <div className="App">
         <header className="App-header">
@@ -83,6 +92,7 @@ class App extends Component {
         {this.getMessagesList()}
 
         <button onClick={this.sendMessage}>Send</button>
+        { sent && 'Sent' }
       </div>
     );
   }

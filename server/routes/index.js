@@ -1,6 +1,6 @@
 import express from 'express'
 import Messagebird from '../service/MessageBird'
-import { check, validationResult } from 'express-validator'
+import { check, validationResult } from 'express-validator/check'
 
 const router = express.Router()
 const messagebird = Messagebird('mAZ4WdLQeoAWrRrWoLkAZSRvu')
@@ -54,15 +54,23 @@ router.get('/messages/:id', (req, res) => {
 
 
 router.post('/messages', (req, res) => {
+    // if(!errors.isEmpty()){
+    //     console.log('errors: >>>', JSON.stringify(errors.array(), null, 2));
+    //     return res.status(200).json({
+    //         success: false,
+    //         content: errors.array()
+    //     })
+        
+    // }
+    
     messagebird.messages.send(req.body)
-        .then((data) => {
-            console.log(JSON.stringify(data, null, 2));
+        .then(({ data }) => {
+            console.log(data);
             return res.status(200).json({
                 success: true,
                 content: data
             })
         }).catch(reason => {
-            console.log(JSON.stringify(reason, null, 2));
             return res.status(200).json({
                 success: false,
                 content: reason
