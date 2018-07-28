@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import axios from 'axios'
+
+import MessagesList from './components/MessagesList'
+import Balance from './components/Balance';
 
 class App extends Component {
   state = {
@@ -17,6 +21,15 @@ class App extends Component {
       loading: true
     });
 
+    axios.get('/api/messages')
+      .then(({ data }) => {
+          this.setState({
+              messagesCount: data.content.totalCount,
+              messagesOffset: data.content.offset,
+              messages: data.content.items
+          })
+      })
+
     axios.get('/api/balance')
       .then(({ data }) => {
         if(data.success && data.content.amount){
@@ -25,16 +38,6 @@ class App extends Component {
             balance: data.content.amount
           })
         }
-      })
-
-    
-    axios.get('/api/messages')
-      .then(({ data }) => {
-        this.setState({
-          messagesCount: data.content.totalCount,
-          messagesOffset: data.content.offset,
-          messages: data.content.items
-        })
       })
   }
 
@@ -47,19 +50,6 @@ class App extends Component {
           })
         }
       })
-  }
-
-  getMessagesList = () => {
-    let messageList = <h5>Loading messages...</h5>;
-    const { messages } = this.state;
-    if(messages !== null){
-      messageList = 
-        <ul>
-          {messages.map((message, key) => <li onClick={() => this.getMessageDetail(message.id)} key={key}>From: {message.originator} Body: {message.body}</li>)} 
-        </ul>
-    }
-    
-    return messageList;
   }
 
   sendMessage = () => {
@@ -78,18 +68,16 @@ class App extends Component {
   }
 
   render() {
-    const { balance, loading, messagesCount, sent } = this.state
+    const { balance, messages, messagesCount, sent } = this.state
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Welcome to Message</h1>
         </header>
         <p className="App-intro">
-          { loading && 'Loading balance ...' }
-          { balance !== null && `Your balance is ${balance} ` }
+          <Balance balance={balance} />
         </p>
-        <h2>Messages: (Total: {messagesCount !== null ? messagesCount : '...'})</h2>
-        {this.getMessagesList()}
+        <MessagesList messagesCount={messagesCount} onItemClick={this.getMessageDetail} messages={messages} />
 
         <button onClick={this.sendMessage}>Send</button>
         { sent && 'Sent' }
@@ -98,4 +86,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, {})(App);
