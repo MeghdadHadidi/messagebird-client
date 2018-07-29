@@ -1,16 +1,10 @@
-import { GET_BALANCE } from '../actions/types'
+import { SET_BALANCE } from '../actions/types'
 
-let initialState = {
-    balance: 0
-}
-
-export default function balance(state = initialState, action) {
+export default function balance(state = 0, action) {
     switch (action.type) {
-        case GET_BALANCE:
-            return {
-                balance: action.payload.amount
-            }
+        case SET_BALANCE:
+            return action.payload
         default:
-            break;
+            return state;
     }
 }
