@@ -1,31 +1,34 @@
-import { SET_BALANCE, GET_BALANCE_START, GET_BALANCE_END, GET_BALANCE_ERROR } from '../actions/types'
+import { GET_MESSAGES_START, GET_MESSAGES_END, GET_MESSAGES_ERROR, SET_MESSAGES } from '../actions/types'
 
 const initialState = {
-    amount: 0,
+    count: 0,
+    offset: 0,
+    items: [],
     fetching: false,
-    fetched: false,
-    errors: null
+    fetched: false
 }
 
-export default function balance(state = initialState, action) {
+export default function messages(state = initialState, action) {
     switch (action.type) {
-        case GET_BALANCE_START:
+        case GET_MESSAGES_START:
             return {
                 ...state,
                 fetching: true
             }
-        case GET_BALANCE_END:
+        case GET_MESSAGES_END:
             return {
                 ...state,
                 fetching: false
             }
-        case SET_BALANCE:
+        case SET_MESSAGES:
             return {
                 ...state,
                 fetched: true,
-                amount: action.payload
+                items: action.payload.items,
+                count: action.payload.totalCount,
+                offset: action.payload.offset
             }
-        case GET_BALANCE_ERROR:
+        case GET_MESSAGES_ERROR:
             return {
                 ...state,
                 errors: action.payload

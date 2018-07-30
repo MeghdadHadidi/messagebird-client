@@ -13,9 +13,9 @@ router.get('/balance', (req, res) => {
                 content: data
             })
         }).catch(reason => {
-            return res.status(200).json({
+            return res.status(reason.response.status).json({
                 success: false,
-                content: reason
+                content: 'Can not finish requet'
             })
         })
 });
@@ -29,9 +29,9 @@ router.get('/messages', (req, res) => {
                 content: data
             })
         }).catch(reason => {
-            return res.status(200).json({
+            return res.status(reason.response.status).json({
                 success: false,
-                content: reason
+                content: 'Can not finish requet'
             })
         })
 })
@@ -45,9 +45,9 @@ router.get('/messages/:id', (req, res) => {
                 content: data
             })
         }).catch(reason => {
-            return res.status(200).json({
+            return res.status(reason.response.status).json({
                 success: false,
-                content: reason
+                content: 'Can not finish requet'
             })
         })
 })
@@ -71,9 +71,9 @@ router.post('/messages', (req, res) => {
                 content: data
             })
         }).catch(reason => {
-            return res.status(200).json({
+            return res.status(reason.response.status).json({
                 success: false,
-                content: reason
+                content: 'Can not finish requet'
             })
         })
 })

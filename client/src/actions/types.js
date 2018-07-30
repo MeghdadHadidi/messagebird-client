@@ -1,7 +1,15 @@
-export const GET_BALANCE = 'GET_BALANCE'
-export const SET_BALANCE = 'SET_BALANCE'
-export const APP_LOADING = 'APP_LOADING'
-export const GETTING_BALANCE = 'GETTING_BALANCE'
+// App
 export const APP_LOADED = 'APP_LOADED'
-export const GETTIN_MESSAGES = 'GETTING_MESSAGES'
-export const GET_MESSAGES = 'GET_MESSAGES'
+export const APP_LOADING = 'APP_LOADING'
+
+// Balance
+export const GET_BALANCE_START = 'GET_BALANCE_START'
+export const GET_BALANCE_END = 'GET_BALANCE_END'
+export const GET_BALANCE_ERROR = 'GET_BALANCE_ERROR'
+export const SET_BALANCE = 'SET_BALANCE'
+
+// Messages
+export const GET_MESSAGES_START = 'GET_MESSAGES_START'
+export const GET_MESSAGES_END = 'GET_MESSAGES_END'
+export const GET_MESSAGES_ERROR = 'GET_MESSAGES_ERROR'
+export const SET_MESSAGES = 'SET_MESSAGES'

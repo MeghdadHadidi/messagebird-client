@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
+// Actions
+import { getBalance } from './actions/balance'
+
+// Components
 import MessagesList from './components/MessagesList'
 import Balance from './components/Balance';
 
@@ -17,28 +22,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    this.setState({
-      loading: true
-    });
-
-    axios.get('/api/messages')
-      .then(({ data }) => {
-          this.setState({
-              messagesCount: data.content.totalCount,
-              messagesOffset: data.content.offset,
-              messages: data.content.items
-          })
-      })
-
-    axios.get('/api/balance')
-      .then(({ data }) => {
-        if(data.success && data.content.amount){
-          this.setState({
-            loading: false,
-            balance: data.content.amount
-          })
-        }
-      })
+    
   }
 
   getMessageDetail = (id) => {
@@ -48,6 +32,11 @@ class App extends Component {
           this.setState({
             selectedMessage: data.content
           })
+        }
+      })
+      .catch(reason => {
+        if(reason.content && reason.content.status){
+          console.log(reason.content)
         }
       })
   }
@@ -65,6 +54,11 @@ class App extends Component {
         })
       }
     })
+    .catch(reason => {
+      if(reason.content && reason.content.status){
+        console.log(reason.content)
+      }
+    })
   }
 
   render() {
@@ -75,7 +69,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to Message</h1>
         </header>
         <p className="App-intro">
-          <Balance balance={balance} />
+          <Balance balance={ balance } />
         </p>
         <MessagesList messagesCount={messagesCount} onItemClick={this.getMessageDetail} messages={messages} />
 
@@ -86,4 +80,14 @@ class App extends Component {
   }
 }
 
-export default connect(null, {})(App);
+const mapStateToProps = (state) => ({
+  balance: state.balance.amount,
+  messages: state.messages.items
+})
+
+App.propTypes = {
+  balance: PropTypes.number.required,
+  messages: PropTypes.array.required
+}
+
+export default connect(mapStateToProps, { getBalance })(App);
