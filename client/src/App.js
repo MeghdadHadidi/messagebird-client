@@ -10,6 +10,9 @@ import { getMessages, sendMessage, getMessageDetail } from './actions/messages'
 import MessagesList from './components/MessagesList'
 import Balance from './components/Balance';
 
+// Styles
+import './styles/App.scss'
+
 class App extends Component {
 
   componentDidMount(){
