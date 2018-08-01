@@ -33,12 +33,16 @@ class Sidebar extends Component {
             <TiMessageTyping />
             <span>SMS</span>
             <ul>
-              <Link to="/messages">
-                <span>Message List</span>
-              </Link>
-              <Link to="/send">
-                <span>Quick Send</span>
-              </Link>
+              <li>
+                <Link to="/messages">
+                  <span>Message List</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/send">
+                  <span>Quick Send</span>
+                </Link>
+              </li>
             </ul>
           </li>
         </ul>
