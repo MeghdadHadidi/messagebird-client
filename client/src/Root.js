@@ -1,15 +1,18 @@
 import React from 'react'
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
+import { Route, BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
+
+// Components
 import App from './App'
+import MessagesList from './components/MessagesList'
 
 const Root = ({ store }) => {
     return (
         <Provider store={store}>
             <Router>
-                <Switch>
-                    <Route path="/" component={ App } />
-                </Switch>
+                <App>
+                    <Route exact path="/messages" component={ MessagesList } />
+                </App>
             </Router>
         </Provider>
     )
