@@ -1,0 +1,16 @@
+// Main
+$font-stack: Montserrat, sans-serif;
+$medium-gray: rgba(0, 0, 0, .4);
+
+// Widget
+$widget-bg: rgba(255, 255, 255, 1);
+$container-bg: rgba(255, 255, 255, 1);
+
+// Sidebar
+$menu-bg: rgba(12, 36, 76, 1);
+$menu-bg-dark: rgba(0, 18, 52, 1);
+$menu-item-active-bg: lighten( $menu-bg, 42% );
+$menu-item-hover-bg: rgba(40, 62, 98, 1);
+
+// Content
+$content-bg: rgba(246, 250, 253, 1);

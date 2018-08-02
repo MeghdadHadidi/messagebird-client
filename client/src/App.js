@@ -2,17 +2,20 @@ import React from 'react';
 
 // Components
 import Header from './components/Header'
+import Content from './components/Content'
 import Sidebar from './components/Sidebar'
 
 // Styles
-import './styles/App.scss'
+import './stylesheets/main.scss'
 
 const App = ({ children }) => (
-    <div className="container">
+    <div className="wrapper">
       <Sidebar />
       <div className="content">
         <Header />
-        { children }
+        <Content>
+          { children }
+        </Content>
       </div>
     </div>
 );

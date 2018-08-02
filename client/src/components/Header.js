@@ -5,7 +5,10 @@ import Balance from './Balance'
 
 const Header = () => (
     <header className="header-container">
-        <Balance />
+        <h3>Dashboard</h3>
+        <div className="header-content">
+            <Balance />
+        </div>
     </header>
 )
 

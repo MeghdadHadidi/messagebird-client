@@ -1,11 +1,9 @@
-@import './fonts.scss';
-
 body{
     background: #ccc;
     font-family: $font-stack;
     margin: 0;
 
-    .container{
+    .wrapper{
         display: flex;
         height: 100vh;
     }
@@ -13,5 +11,7 @@ body{
     .content{
         display: block;
         width: 100%;
+        background: $content-bg;
+        padding: 0 30px;
     }
 }

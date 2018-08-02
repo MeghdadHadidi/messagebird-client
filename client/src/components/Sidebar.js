@@ -5,9 +5,6 @@ import { TiMessageTyping, TiHome, TiContacts } from 'react-icons/ti'
 // Images
 import logo from '../images/logo-icon-white.svg'
 
-// Styles
-import '../styles/Sidebar.scss'
-
 class Sidebar extends Component {
   render() {
     return (
@@ -16,22 +13,24 @@ class Sidebar extends Component {
         <a className="brand">
             <img alt="Message Bird" src={ logo } />
         </a>
-        <ul>
+        <ul className="products">
           <li title="Dashboard">
             <Link to="/">
-              <TiHome />
+              <TiHome size="1.3em" className="menu-item-icon" />
               <span>Dashboard</span>
             </Link>
           </li>
           <li title="Contacts">
             <Link to="/contacts">
-              <TiContacts />
+              <TiContacts size="1.3em" className="menu-item-icon" />
               <span>Contacts</span>
             </Link>
           </li>
           <li title="SMS">
-            <TiMessageTyping />
-            <span>SMS</span>
+            <a href="/messages">
+              <TiMessageTyping size="1.3em" className="menu-item-icon" />
+              <span>SMS</span>
+            </a>
             <ul>
               <li>
                 <Link to="/messages">

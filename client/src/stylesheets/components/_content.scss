@@ -1,0 +1,10 @@
+.container{
+    padding: 20px 25px;
+    background: $container-bg;
+    border-radius: 6px;
+
+    > h5{
+        margin: 0 0 20px;
+        color: $medium-gray;
+    }
+}
