@@ -1,9 +1,22 @@
 .widget{
     background: $widget-bg;
-    padding: 20px;
+    padding: 25px 20px;
     border: 1px solid rgba(0, 0, 0, .05);
+    border-bottom-width: 5px;
 
     h5{
         margin: 0 0 25px;
+        color: $dark-gray;
+        font-weight: 600;
+
+        svg{
+            margin-right: 10px;
+        }
+    }
+
+    > div{
+        font-size: 14px;
+        color: #bbb;
+        font-weight: 400;
     }
 }
