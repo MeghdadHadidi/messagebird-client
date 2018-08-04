@@ -17,17 +17,17 @@ const Widget = props => {
     }
 
     return (
-        <div className="widget" data-state="ready" style={ styles.widget }>
+        <div className={className({'widget': true, 'loading': props.loading})} data-state="ready" style={ styles.widget }>
             { (Icon || props.title) &&
                 <h5>
                     { Icon && <Icon size="21" color="#ccc" /> }
                     { props.title }
                 </h5>
             }
-            <div className={className({'loading-dimmer': true, 'loading': props.loading})}>
+            <div className="loading-dimmer">
                 <BeatLoader size={6} color="#999" />
             </div>
-            <div>
+            <div className="widget-content">
                 { props.render() }
             </div>
         </div>

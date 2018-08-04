@@ -57,6 +57,7 @@
                 background: $menu-item-active-bg;
                 width: calc(100% + 4px);
                 border-radius: 0px 4px 4px 0px;
+                position: relative;
 
                 transition: background-color .2s cubic-bezier(0.165, 0.84, 0.44, 1);
 
@@ -70,7 +71,7 @@
                         > li{
                             padding: 0px;
 
-                            a{
+                            a {
                                 margin-left: -15px;
                                 margin-right: -15px;
                                 padding: 2px 0 2px 25px;
