@@ -3,8 +3,10 @@ import React from 'react';
 const Content = ({ children }) => {
     return (
         <div className="container">
-            <h5>Sms widgets</h5>
-            { children }
+            <h5>Widgets</h5>
+            <div className="widgets-container">
+                { children }
+            </div>
         </div>
     );
 };

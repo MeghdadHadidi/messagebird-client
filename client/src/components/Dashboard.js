@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Widget from './Widget'
+import SmsWidget from './SmsWidget'
 
 const Dashboard = () => {
     return (
         <React.Fragment>
-            <Widget />
+            <SmsWidget />
         </React.Fragment>
     );
 };
