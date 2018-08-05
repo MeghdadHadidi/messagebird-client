@@ -1,7 +1,7 @@
 import { SET_BALANCE, GET_BALANCE_START, GET_BALANCE_END, GET_BALANCE_ERROR } from '../actions/types'
 
 const initialState = {
-    amount: null,
+    amount: 0,
     fetching: false,
     fetched: false,
     errors: null

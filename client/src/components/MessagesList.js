@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
+import className from 'classnames'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 // Actions
 import { getMessages } from '../actions/messages'
+
+// Components
+import Loader from './helpers/Loader'
 
 class MessagesList extends Component {
 
@@ -13,28 +17,33 @@ class MessagesList extends Component {
 
     render(){
         const { messages, onItemClick, messagesCount } = this.props;
-        if(messages === null){
-            return(<p>Loading messages...</p>)
-        }
-        else{
-            return (
-                <React.Fragment>
-                    <h2>Messages: (Total: {messagesCount !== null ? messagesCount : '...'})</h2>
-                    <ul>
+        return (
+            <div className={className({'messages-list': true, 'loading': this.props.loading})}>
+                <Loader />
+                <h2>Total: {messagesCount}</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>From</th>
+                            <th>Body</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         {messages.map(
-                            (message, key) => <li key={key} onClick={() => onItemClick(message.id)}>From: { message.originator } Body: { message.body }</li>
+                            (message, key) => <tr key={key} onClick={() => onItemClick(message.id)}><td>{key+1}</td><td>{ message.originator }</td><td>{ message.body }</td></tr>
                         )} 
-                    </ul>
-                </React.Fragment>
-            )
-        }
+                    </tbody>
+                </table>
+            </div>
+        )
     }
 }
 
 MessagesList.propTypes = {
     getMessages: PropTypes.func.isRequired,
     messages: PropTypes.array.isRequired,
-    count: PropTypes.number.isRequired
+    messagesCount: PropTypes.number.isRequired
 }
 
 function mapStateToProps(state){

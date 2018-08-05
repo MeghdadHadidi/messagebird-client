@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import className from 'classnames'
 
-import { BeatLoader } from 'react-spinners'
+// Components
+import Loader from './helpers/Loader'
 
 const Widget = props => {
     let Icon;
@@ -17,16 +18,14 @@ const Widget = props => {
     }
 
     return (
-        <div className={className({'widget': true, 'loading': props.loading})} data-state="ready" style={ styles.widget }>
+        <div className={className({'widget': true, 'loading': props.loading})} style={ styles.widget }>
+            <Loader />
             { (Icon || props.title) &&
                 <h5>
-                    { Icon && <Icon size="21" color="#ccc" /> }
+                    { Icon && <Icon size="28" color="#ccc" /> }
                     { props.title }
                 </h5>
             }
-            <div className="loading-dimmer">
-                <BeatLoader size={6} color="#999" />
-            </div>
             <div className="widget-content">
                 { props.render() }
             </div>
