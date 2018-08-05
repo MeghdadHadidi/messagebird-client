@@ -12,14 +12,8 @@ const Root = ({ store }) => {
         <Provider store={store}>
             <Router>
                 <App>
-                    <Route exact path="/" render={ () => {
-                        store.dispatch({ type: 'SET_CURRENT_PAGE', payload: {page: {title: 'Widgets'}} })
-                        return <Dashboard />
-                    }} />
-                    <Route exact path="/messages" render={ () => {
-                        store.dispatch({ type: 'SET_CURRENT_PAGE', payload: {page: {title: 'Messages List'}} })
-                        return <MessagesList />
-                    }} />
+                    <Route exact path="/" component={ Dashboard } />
+                    <Route exact path="/messages" component={ MessagesList } />
                 </App>
             </Router>
         </Provider>
