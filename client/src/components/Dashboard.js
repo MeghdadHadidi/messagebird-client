@@ -2,11 +2,11 @@ import React from 'react';
 
 import SmsWidget from './SmsWidget'
 
-const Dashboard = () => {
+const Dashboard = (props) => {
     return (
-        <React.Fragment>
+        <div className="widgets-container">
             <SmsWidget />
-        </React.Fragment>
+        </div>
     );
 };
 
