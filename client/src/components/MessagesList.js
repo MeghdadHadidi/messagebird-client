@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import className from 'classnames'
 import { connect } from 'react-redux'
 
 // Actions
 import { getMessages } from '../actions/messages'
-
-// Components
-import Loader from './helpers/Loader'
 
 class MessagesList extends Component {
 
@@ -16,25 +12,29 @@ class MessagesList extends Component {
     }
 
     render(){
-        const { messages, onItemClick, messagesCount, loading } = this.props;
-        return (
-            <div className={className({loading: loading})}>
-                <Loader />
-                <h2>Total: {messagesCount !== null ? messagesCount : '...'}</h2>
-                <ul>
-                    {messages.map(
-                        (message, key) => <li key={key} onClick={() => onItemClick(message.id)}>From: { message.originator } Body: { message.body }</li>
-                    )} 
-                </ul>
-            </div>
-        )
+        const { messages, onItemClick, messagesCount } = this.props;
+        if(messages === null){
+            return(<p>Loading messages...</p>)
+        }
+        else{
+            return (
+                <React.Fragment>
+                    <h2>Messages: (Total: {messagesCount !== null ? messagesCount : '...'})</h2>
+                    <ul>
+                        {messages.map(
+                            (message, key) => <li key={key} onClick={() => onItemClick(message.id)}>From: { message.originator } Body: { message.body }</li>
+                        )} 
+                    </ul>
+                </React.Fragment>
+            )
+        }
     }
 }
 
 MessagesList.propTypes = {
     getMessages: PropTypes.func.isRequired,
     messages: PropTypes.array.isRequired,
-    messagesCount: PropTypes.number.isRequired
+    count: PropTypes.number.isRequired
 }
 
 function mapStateToProps(state){

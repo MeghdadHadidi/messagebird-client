@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import className from 'classnames'
 
-// Components
-import Loader from './helpers/Loader'
+import { BeatLoader } from 'react-spinners'
 
 const Widget = props => {
     let Icon;
@@ -25,7 +24,9 @@ const Widget = props => {
                     { props.title }
                 </h5>
             }
-            <Loader />
+            <div className="loading-dimmer">
+                <BeatLoader size={6} color="#999" />
+            </div>
             <div className="widget-content">
                 { props.render() }
             </div>

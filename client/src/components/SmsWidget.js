@@ -30,7 +30,7 @@ class SmsWidget extends Component {
 
 SmsWidget.propTypes = {
     getBalance: PropTypes.func.isRequired,
-    balance: PropTypes.number
+    balance: PropTypes.number.isRequired
 }
 
 function mapStateToProps(state){

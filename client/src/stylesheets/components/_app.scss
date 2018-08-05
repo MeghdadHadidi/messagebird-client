@@ -14,28 +14,4 @@ body{
         background: $content-bg;
         padding: 0 30px;
     }
-
-    .loading-dimmer{
-        position: absolute;
-        z-index: 10;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        display: none;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .loading{
-        position: relative;
-
-        > *:not(.loading-dimmer){
-            filter: blur(2px);
-        }
-
-        .loading-dimmer{
-            display: flex;
-        }
-    }
 }
