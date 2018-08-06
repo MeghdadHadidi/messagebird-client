@@ -36,6 +36,8 @@ export const sendMessage = (data) => {
                 }
             })
             .catch(reason => {
+                //TODO:
+                // Add easy toast
                 if(reason.content && reason.content.status){
                     console.log(reason.content)
                 }
