@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
+import className from 'classnames'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 // Actions
 import { sendMessage } from '../actions/messages'
+
+// Components
+import ErrorIcon from './helpers/ErrorIcon'
+import Loader from './helpers/Loader'
 
 class QuickSendForm extends Component {
     state = {
@@ -21,7 +26,8 @@ class QuickSendForm extends Component {
         })
     }
 
-    sendMessage = () => {
+    sendMessage = (e) => {
+        e.preventDefault()
         this.props.sendMessage(this.state.form)
     }
 
@@ -31,14 +37,17 @@ class QuickSendForm extends Component {
 
     render() {
         const { form } = this.state;
+        const { loading } = this.props;
         return (
-            <form onSubmit={this.sendMessage}>
+            <form className={className({'loading': loading})} onSubmit={this.sendMessage}>
+                <ErrorIcon />
+                <Loader />
                 <div className="form-input-group">
-                    <label for="to">To</label>
+                    <label htmlFor="to">To</label>
                     <input id="to" type="text" name="to" onChange={this.handleInputChange} value={form.to} />
                 </div>
                 <div className="form-input-group">
-                    <label for="body">Body</label>
+                    <label htmlFor="body">Body</label>
                     <div id="body" contentEditable onChange={this.handleInputChange}>{form.body}</div>
                 </div>
                 <button type="submit" className="button primary">Send</button>
@@ -48,7 +57,9 @@ class QuickSendForm extends Component {
 }
 
 function mapStateToProps(state){
-    return {}
+    return {
+        loading: state.messages.fetching
+    }
 }
 
 export default connect(mapStateToProps, { sendMessage })(QuickSendForm)

@@ -26,16 +26,16 @@ const Root = ({ store }) => {
                     }} />
                     <Route exact path="/messages" render={ () => {
                         store.dispatch(setCurrentPage({
-                            title: 'Cartable',
-                            description: 'Current cartable'
+                            title: 'SMS',
+                            description: 'Message list'
                         }))
 
                         return <MessagesList />
                     }} />
                     <Route path="/messages/send" render={ () => {
                         store.dispatch(setCurrentPage({
-                            title: 'Cartable',
-                            description: 'Related'
+                            title: 'SMS',
+                            description: 'Send message'
                         }))
 
                         return <SendMessage />

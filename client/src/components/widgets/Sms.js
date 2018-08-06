@@ -7,16 +7,17 @@ import { sendMessage } from '../../actions/messages'
 
 // Components
 import Widget from '../Widget'
+import QuickSendForm from '../QuickSendForm'
 
 class SmsWidget extends Component {
     
     render() {
         return (
-            <Widget icon="MessageCircle" title="Reports" color="#666" render={
+            <Widget icon="MessageCircle" title="SMS" color="#666" render={
                 () => {
                     return(
                         <React.Fragment>
-                            <div>Reports</div>
+                            <QuickSendForm />
                         </React.Fragment>
                     )
                 }

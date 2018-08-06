@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { TiMessageTyping, TiHome, TiContacts } from 'react-icons/ti'
 
 // Images
-import logo from '../images/logo-small-bw.png'
+import logo from '../images/logo-icon-white.svg'
 
 // Components
 import NavItem from './helpers/NavItem'
@@ -25,20 +25,20 @@ class Sidebar extends Component {
             <TiContacts size="1.3em" className="menu-item-icon" />
             <span>Contacts</span>
           </NavItem>          
-          <NavItem title="Cartables" activeClassName="active open" to="/messages" render={() => {
+          <NavItem title="SMS" activeClassName="active open" to="/messages" render={() => {
             return(
               <ul>              
                 <NavItem exact activeClassName="active" to="/messages">
-                  <span>Inbox</span>
+                  <span>Message List</span>
                 </NavItem>              
                 <NavItem activeClassName="active" to="/messages/send">
-                  <span>Related</span>
+                  <span>Send Message</span>
                 </NavItem>
               </ul>
             )
           }}>
             <TiMessageTyping size="1.3em" className="menu-item-icon" />
-            <span>Cartables</span>
+            <span>SMS</span>
           </NavItem>
         </ul>
       </nav>
