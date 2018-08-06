@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import App from './App'
 import Dashboard from './components/Dashboard'
 import MessagesList from './components/MessagesList'
+import SendMessage from './components/SendMessage'
 
 // Actions
 import { setCurrentPage } from './actions/pages'
@@ -25,11 +26,19 @@ const Root = ({ store }) => {
                     }} />
                     <Route exact path="/messages" render={ () => {
                         store.dispatch(setCurrentPage({
-                            title: 'SMS',
-                            description: 'List of messages'
+                            title: 'Cartable',
+                            description: 'Current cartable'
                         }))
 
                         return <MessagesList />
+                    }} />
+                    <Route path="/messages/send" render={ () => {
+                        store.dispatch(setCurrentPage({
+                            title: 'Cartable',
+                            description: 'Related'
+                        }))
+
+                        return <SendMessage />
                     }} />
                 </App>
             </Router>

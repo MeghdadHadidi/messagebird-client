@@ -12,11 +12,11 @@ class SmsWidget extends Component {
     
     render() {
         return (
-            <Widget icon="MessageCircle" title="Sms" color="#666" render={
+            <Widget icon="MessageCircle" title="Reports" color="#666" render={
                 () => {
                     return(
                         <React.Fragment>
-                            <div>Send</div>
+                            <div>Reports</div>
                         </React.Fragment>
                     )
                 }

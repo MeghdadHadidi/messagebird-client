@@ -62,20 +62,30 @@ router.post('/messages', (req, res) => {
     //     })
         
     // }
+
+    return res.status(200).json({
+        success: true,
+        content: data
+    })
+
+    // return res.status(reason.response.status).json({
+    //     success: false,
+    //     content: 'Can not finish requet'
+    // })
     
-    messagebird.messages.send(req.body)
-        .then(({ data }) => {
-            console.log(data);
-            return res.status(200).json({
-                success: true,
-                content: data
-            })
-        }).catch(reason => {
-            return res.status(reason.response.status).json({
-                success: false,
-                content: 'Can not finish requet'
-            })
-        })
+    // messagebird.messages.send(req.body)
+    //     .then(({ data }) => {
+    //         console.log(data);
+    //         return res.status(200).json({
+    //             success: true,
+    //             content: data
+    //         })
+    //     }).catch(reason => {
+    //         return res.status(reason.response.status).json({
+    //             success: false,
+    //             content: 'Can not finish requet'
+    //         })
+    //     })
 })
 
 export default router

@@ -21,7 +21,7 @@ export const getMessages = () => {
     }
 }
 
-export const sendMessage = () => {
+export const sendMessage = (data) => {
     return dispatch => {
         return axios.post('/api/messages', {
                 'originator': 'MessageBird', 
@@ -31,7 +31,7 @@ export const sendMessage = () => {
             .then(({ data }) => {
                 if(data.success){
                     this.setState({
-                    sent: true
+                        sent: true
                     })
                 }
             })

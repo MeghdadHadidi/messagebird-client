@@ -1,0 +1,34 @@
+.messages-list{
+
+    table{
+        width: 100%;
+
+        td, th{
+            height: 30px;
+        }
+        
+        thead{
+
+            tr{
+
+                th{
+                    background: rgba(0, 0, 0, .2);
+                }
+            }
+        }
+
+        tbody{
+
+            tr{
+
+                td{
+                    padding: 10px;
+                }
+
+                &:nth-child(odd){
+                    background-color: rgba(0, 0, 0, .02);
+                }
+            }
+        }
+    }
+}

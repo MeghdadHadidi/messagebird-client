@@ -10,7 +10,7 @@ const initialState = {
 export default function pages(state = initialState, action) {
     switch(action.type){
         case SET_CURRENT_PAGE:
-            if(state.current.title === action.payload.title) return state;
+            if(state.current.title === action.payload.title && state.current.description === action.payload.description) return state;
             return {
                 ...state,
                 current: action.payload

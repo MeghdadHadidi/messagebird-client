@@ -24,8 +24,8 @@ class MessagesList extends Component {
                 <table>
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>From</th>
+                            <th style={{width: '40px'}}>#</th>
+                            <th style={{width: '200px'}}>From</th>
                             <th>Body</th>
                         </tr>
                     </thead>

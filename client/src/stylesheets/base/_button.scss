@@ -1,0 +1,25 @@
+.button{
+    border: 0;
+    border-radius: 3px;
+    background: $button-default;
+    font-family: $font-stack;
+    padding: 6px 15px;
+    color: $button-md-gray-text;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .2s ease;
+
+    &:hover{
+        background: darken($button-default, 10%);
+        transition: all .2s ease;
+    }
+
+    &.primary{
+        background: $button-primary;
+        color: #fff;
+
+        &:hover{
+            background: darken($button-primary, 10%);
+        }
+    }
+}

@@ -2,6 +2,7 @@
 $font-stack: Montserrat, sans-serif;
 $medium-gray: rgba(0, 0, 0, .4);
 $dark-gray: rgba(0, 0, 0, .8);
+$light-gray: rgba(0, 0, 0, .2);
 
 // Widget
 $widget-bg: rgba(255, 255, 255, 1);
@@ -15,3 +16,8 @@ $menu-item-hover-bg: rgba(40, 62, 98, 1);
 
 // Content
 $content-bg: rgba(246, 250, 253, 1);
+
+// Buttons
+$button-default: rgba(0, 0, 0, 0.3);
+$button-primary: rgba(107, 154, 232, 1);
+$button-md-gray-text: #333;
