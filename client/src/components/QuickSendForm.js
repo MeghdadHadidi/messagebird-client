@@ -7,7 +7,6 @@ import PropTypes from 'prop-types'
 import { sendMessage } from '../actions/messages'
 
 // Components
-import ErrorIcon from './helpers/ErrorIcon'
 import Loader from './helpers/Loader'
 
 class QuickSendForm extends Component {
@@ -40,7 +39,6 @@ class QuickSendForm extends Component {
         const { loading } = this.props;
         return (
             <form className={className({'loading': loading})} onSubmit={this.sendMessage}>
-                <ErrorIcon />
                 <Loader />
                 <div className="form-input-group">
                     <label htmlFor="to">To</label>
@@ -58,7 +56,7 @@ class QuickSendForm extends Component {
 
 function mapStateToProps(state){
     return {
-        loading: state.messages.fetching
+        loading: state.messages.sending
     }
 }
 

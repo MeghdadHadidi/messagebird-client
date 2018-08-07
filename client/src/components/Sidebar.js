@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { TiMessageTyping, TiHome, TiContacts } from 'react-icons/ti'
 
 // Images
-import logo from '../images/logo-icon-white.svg'
+import logo from '../images/logo-small-bw.png'
 
 // Components
 import NavItem from './helpers/NavItem'

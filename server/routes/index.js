@@ -63,9 +63,9 @@ router.post('/messages', (req, res) => {
         
     // }
 
-    return res.status(200).json({
-        success: true,
-        content: data
+    return res.status(403).json({
+        success: false,
+        content: 'ok'
     })
 
     // return res.status(reason.response.status).json({

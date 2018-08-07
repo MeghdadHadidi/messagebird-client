@@ -10,6 +10,7 @@ import Sidebar from './components/Sidebar'
 
 // Styles
 import './stylesheets/main.scss'
+import 'izitoast/dist/css/iziToast.min.css'
 
 class App extends PureComponent {
   render(){

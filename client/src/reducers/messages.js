@@ -47,31 +47,26 @@ export default function messages(state = initialState, action) {
         case SEND_MESSAGES_START:
             return {
                 ...state,
-                fetching: true,
+                sending: true,
                 sent: false,
-                fetched: false
+                error: null
             }
         case SEND_MESSAGES_END:
             return {
                 ...state,
-                fetching: false,
-                sent: false,
-                fetched: false
+                sending: false,
+                sent: false
             }
         case SEND_MESSAGES_ERROR:
             return {
                 ...state,
-                fetching: false,
-                fetched: true,
-                sent: false,
                 error: action.payload
             }
         case SEND_MESSAGES_SUCCESS:
             return {
                 ...state,
-                fetched: true,
-                error: null,
-                sent: true 
+                sent: true,
+                error: null
             }
         default:
             return state;

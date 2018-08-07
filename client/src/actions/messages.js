@@ -9,6 +9,7 @@ import {
     SEND_MESSAGES_SUCCESS
 } from './types'
 import axios from 'axios'
+import iziToast from 'izitoast'
 
 export const getMessages = () => {
     return dispatch => {
@@ -48,6 +49,12 @@ export const sendMessage = (data) => {
                 }
             })
             .catch(reason => {
+                dispatch({ type: SEND_MESSAGES_END })
+                iziToast.error({
+                    title: 'Error: '+reason.response.status,
+                    message: reason.response.statusText,
+                    position: 'topRight'
+                })
                 dispatch({ 
                     type: SEND_MESSAGES_ERROR, 
                     payload: reason

@@ -30,10 +30,4 @@ SmsWidget.propTypes = {
     sendMessage: PropTypes.func.isRequired
 }
 
-function mapStateToProps(state){
-    return {
-        
-    }
-}
-
-export default connect(mapStateToProps, { sendMessage })(SmsWidget)
+export default connect(null, { sendMessage })(SmsWidget)
