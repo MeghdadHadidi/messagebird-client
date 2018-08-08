@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import className from 'classnames'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -18,12 +19,14 @@ class OverviewWidget extends Component {
     render() {
         const { balance, messageCount } = this.props;
         return (
-            <Widget icon="Book" loading={!balance} title="Overview" color="#666" render={
+            <Widget style={{width: '150px' }} className="overview-widget" icon="Balance" loading={!balance} title="Balance" color="#666" render={
                 () => {
                     return(
                         <React.Fragment>
-                            <div>Balance: { balance } </div>
-                            <div>Sent: { messageCount } </div>
+                            <div className={className({"account-overview": true, "balance": true})} >
+                                <span>Credit for sending message</span>
+                                <strong className={className({"red-text": !(balance > 6)})}>{ balance }</strong>
+                            </div>
                         </React.Fragment>
                     )
                 }

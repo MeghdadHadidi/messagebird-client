@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 // Actions
-import { sendMessage } from '../actions/messages'
+import { sendMessage, getMessages } from '../actions/messages'
+import { getBalance } from '../actions/balance'
 
 // Components
 import Loader from './helpers/Loader'
@@ -12,7 +13,7 @@ import Loader from './helpers/Loader'
 class QuickSendForm extends Component {
     state = {
         form: {
-            to: '',
+            recipients: '',
             body: ''
         }
     }
@@ -20,18 +21,26 @@ class QuickSendForm extends Component {
     handleInputChange = (e) => {
         this.setState({
             form: {
-                [e.target.name]: [e.target.value]
+                ...this.state.form,
+                [e.target.name]: e.target.value
             }
         })
     }
 
     sendMessage = (e) => {
         e.preventDefault()
-        this.props.sendMessage(this.state.form)
+        let messageObject = Object.assign({}, this.state.form);
+        messageObject.recipients = messageObject.recipients.split(',');
+        this.props.sendMessage(messageObject).then(() => {
+            this.props.getMessages()
+            this.props.getBalance()
+        })
     }
 
     static propTypes = {
         sendMessage: PropTypes.func.isRequired,
+        getBalance: PropTypes.func.isRequired,
+        getMessages: PropTypes.func.isRequired
     }
 
     render() {
@@ -41,12 +50,12 @@ class QuickSendForm extends Component {
             <form className={className({'loading': loading})} onSubmit={this.sendMessage}>
                 <Loader />
                 <div className="form-input-group">
-                    <label htmlFor="to">To</label>
-                    <input id="to" type="text" name="to" onChange={this.handleInputChange} value={form.to} />
+                    <label htmlFor="recipients">Recipients</label>
+                    <input id="recipients" type="text" name="recipients" onChange={this.handleInputChange} value={form.recipients} />
                 </div>
                 <div className="form-input-group">
                     <label htmlFor="body">Body</label>
-                    <div id="body" contentEditable onChange={this.handleInputChange}>{form.body}</div>
+                    <textarea id="body" name="body" value={form.body} onChange={this.handleInputChange} />
                 </div>
                 <button type="submit" className="button primary">Send</button>
             </form>
@@ -60,4 +69,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, { sendMessage })(QuickSendForm)
+export default connect(mapStateToProps, { sendMessage, getMessages, getBalance })(QuickSendForm)

@@ -13,7 +13,7 @@ class SmsWidget extends Component {
     
     render() {
         return (
-            <Widget icon="MessageCircle" title="SMS" color="#666" render={
+            <Widget style={{width: '300px'}} icon="MessageCircle" title="SMS" color="#666" render={
                 () => {
                     return(
                         <React.Fragment>

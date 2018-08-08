@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 // Actions
-import { getMessages } from '../actions/messages'
+import { getMessages, getMessageDetail } from '../actions/messages'
 
 // Components
 import Loader from './helpers/Loader'
@@ -16,7 +16,7 @@ class MessagesList extends Component {
     }
 
     render(){
-        const { messages, onItemClick, messagesCount } = this.props;
+        const { messages, getMessageDetail, messagesCount } = this.props;
         return (
             <div className={className({'messages-list': true, 'loading': this.props.loading})}>
                 <Loader />
@@ -31,7 +31,7 @@ class MessagesList extends Component {
                     </thead>
                     <tbody>
                         {messages.map(
-                            (message, key) => <tr key={key} onClick={() => onItemClick(message.id)}><td>{key+1}</td><td>{ message.originator }</td><td>{ message.body }</td></tr>
+                            (message, key) => <tr key={key} onClick={() => getMessageDetail(message.id)}><td>{key+1}</td><td>{ message.originator }</td><td>{ message.body }</td></tr>
                         )} 
                     </tbody>
                 </table>
@@ -43,6 +43,7 @@ class MessagesList extends Component {
 MessagesList.propTypes = {
     getMessages: PropTypes.func.isRequired,
     messages: PropTypes.array.isRequired,
+    onItemClick: PropTypes.func.isRequired,
     messagesCount: PropTypes.number.isRequired
 }
 
@@ -55,4 +56,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, { getMessages })(MessagesList);
+export default connect(mapStateToProps, { getMessages, getMessageDetail })(MessagesList);

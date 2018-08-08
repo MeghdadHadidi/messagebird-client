@@ -1,0 +1,38 @@
+.overview-widget{
+    
+    > .widget-content{
+        display: flex;
+    }
+
+    .account-overview{
+        position: relative;
+        flex: 1;
+    
+        span{
+            display: block;
+        }
+
+        strong{
+            color: #333;
+            font-size: 96px;
+            font-weight: 400;
+            animation: numbers .3s ease;
+
+            &.red-text{
+                color: #ff494a;
+            }
+        }
+    }
+}
+
+@keyframes numbers{
+    0%{
+        position: absolute;
+        top: -100%;
+    }
+
+    100%{
+        position: absolute;
+        top: 100%;
+    }
+}

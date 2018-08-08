@@ -12,13 +12,13 @@ const Widget = props => {
     }
     
     const styles = {
-        widget: {
+        widget: Object.assign(props.style || {}, {
             boxShadow: `0px 4px 0px ${props.color ? props.color : '#ccc'}`
-        }
+        })
     }
 
     return (
-        <div className={className({'widget': true, 'loading': props.loading})} style={ styles.widget }>
+        <div className={className({'widget': true, 'loading': props.loading, [props.className]: true})} style={ styles.widget }>
             <Loader />
             { (Icon || props.title) &&
                 <h5>

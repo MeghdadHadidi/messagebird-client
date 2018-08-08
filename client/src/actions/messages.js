@@ -35,13 +35,17 @@ export const sendMessage = (data) => {
     return dispatch => {
         dispatch({ type: SEND_MESSAGES_START });
         return axios.post('/api/messages', {
-                'originator': 'MessageBird', 
-                'recipients': 989126036931, 
-                'body': 'This is a test message.'
+                ...data,
+                originator: 'MessageBird'
             })
             .then(({ data }) => {
                 dispatch({ type: SEND_MESSAGES_END })
                 if(data.success){
+                    iziToast.success({
+                        title: 'Success',
+                        message: data.content,
+                        position: 'topRight'
+                    })
                     dispatch({ 
                         type: SEND_MESSAGES_SUCCESS, 
                         payload: data 
@@ -50,18 +54,24 @@ export const sendMessage = (data) => {
             })
             .catch(reason => {
                 dispatch({ type: SEND_MESSAGES_END })
+                let { content } = reason.response.data;
+                let errorMessage = reason.response.statusText
+                if(content && content.data && content.data.length){
+                    errorMessage += ':\n'
+                    content.data.forEach((item) => {
+                        errorMessage += `   - ${item.msg}\n`
+                    })
+                }
                 iziToast.error({
                     title: 'Error: '+reason.response.status,
-                    message: reason.response.statusText,
+                    message: errorMessage,
+                    timeout: 0,
                     position: 'topRight'
                 })
                 dispatch({ 
                     type: SEND_MESSAGES_ERROR, 
                     payload: reason
-                })
-                //TODO:
-                // Add easy toast
-                
+                })                
             })
     }
 }
