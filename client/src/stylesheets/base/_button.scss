@@ -8,6 +8,7 @@
     font-weight: 500;
     cursor: pointer;
     transition: all .2s ease;
+    text-decoration: none;
 
     &:hover{
         background: darken($button-default, 10%);

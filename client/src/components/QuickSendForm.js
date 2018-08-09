@@ -32,12 +32,20 @@ class QuickSendForm extends Component {
         let messageObject = Object.assign({}, this.state.form);
         messageObject.recipients = messageObject.recipients.split(',');
         this.props.sendMessage(messageObject).then(() => {
+            this.setState({
+                form: {
+                    recipients: '',
+                    body: ''
+                }
+            })
             this.props.getMessages()
             this.props.getBalance()
         })
     }
 
     static propTypes = {
+        loading: PropTypes.bool.isRequired,
+        sent: PropTypes.bool.isRequired,
         sendMessage: PropTypes.func.isRequired,
         getBalance: PropTypes.func.isRequired,
         getMessages: PropTypes.func.isRequired
@@ -57,7 +65,7 @@ class QuickSendForm extends Component {
                     <label htmlFor="body">Body</label>
                     <textarea id="body" name="body" value={form.body} onChange={this.handleInputChange} />
                 </div>
-                <button type="submit" className="button primary">Send</button>
+                <button disabled={loading} type="submit" className="button primary">Send</button>
             </form>
         )
     }
@@ -65,7 +73,8 @@ class QuickSendForm extends Component {
 
 function mapStateToProps(state){
     return {
-        loading: state.messages.sending
+        loading: state.messages.sending,
+        sent: state.messages.sent
     }
 }
 

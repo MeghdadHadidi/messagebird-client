@@ -23,6 +23,12 @@ export const getMessages = () => {
                 })
             })
             .catch(reason => {
+                iziToast.error({
+                    title: 'MessageList: '+reason.response.status,
+                    message: reason.response.statusText,
+                    position: 'topRight'
+                })
+                dispatch({ type: GET_MESSAGES_END })
                 dispatch({
                     type: GET_MESSAGES_ERROR,
                     payload: reason
@@ -63,7 +69,7 @@ export const sendMessage = (data) => {
                     })
                 }
                 iziToast.error({
-                    title: 'Error: '+reason.response.status,
+                    title: 'SendMessage: '+reason.response.status,
                     message: errorMessage,
                     timeout: 0,
                     position: 'topRight'

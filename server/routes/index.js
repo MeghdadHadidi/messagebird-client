@@ -16,7 +16,7 @@ router.get('/balance', (req, res) => {
             return res.status(reason.response.status).json({
                 success: false,
                 content: {
-                    error: 'Can not finish request'
+                    error: reason.response.statusText
                 }
             })
         })

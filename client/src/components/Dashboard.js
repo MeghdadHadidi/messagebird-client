@@ -1,12 +1,14 @@
 import React from 'react';
 
-import OverviewWidget from './widgets/Overview'
+import BalanceWidget from './widgets/Balance'
+import MessagesWidget from './widgets/Messages'
 import SmsWidget from './widgets/Sms'
 
 const Dashboard = () => {
     return (
         <div className="widgets-container">
-            <OverviewWidget />
+            <BalanceWidget />
+            <MessagesWidget />
             <SmsWidget />
         </div>
     );
