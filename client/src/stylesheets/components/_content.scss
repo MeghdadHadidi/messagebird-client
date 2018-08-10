@@ -5,7 +5,7 @@
 
     .widgets-container{
         display: grid;
-        grid-template-columns: min-content max-content auto;
+        grid-template-columns: min-content max-content min-content min-content;
         grid-gap: 10px;
         grid-auto-rows: minmax(100px, auto);
     }

@@ -1,0 +1,21 @@
+.contacts-list{
+
+    table{
+        width: 100%;
+
+        thead{
+            tr{
+                background-color: $light-gray;
+            }
+        }
+
+        tbody{
+            tr{
+
+                td{
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

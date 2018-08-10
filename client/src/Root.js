@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import App from './App'
 import Dashboard from './components/Dashboard'
 import MessagesList from './components/MessagesList'
+import Contacts from './components/Contacts'
 import SendMessage from './components/SendMessage'
 
 // Actions
@@ -23,6 +24,14 @@ const Root = ({ store }) => {
                         }))
 
                         return <Dashboard />
+                    }} />
+                    <Route exact path="/contacts" render={ () => {
+                        store.dispatch(setCurrentPage({
+                            title: 'Contacts',
+                            description: 'List'
+                        }))
+
+                        return <Contacts />
                     }} />
                     <Route exact path="/messages" render={ () => {
                         store.dispatch(setCurrentPage({

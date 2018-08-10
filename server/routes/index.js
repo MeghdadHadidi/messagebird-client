@@ -92,4 +92,22 @@ router.post('/messages', [
         })
 })
 
+
+router.get('/contacts', (req, res) => {
+    messagebird.contacts.get()
+        .then(({ data }) => {
+            return res.status(200).json({
+                success: true,
+                content: data
+            })
+        }).catch(reason => {
+            return res.status(reason.response.status).json({
+                success: false,
+                content: {
+                    error: 'Can not finish request'
+                }
+            })
+        })
+})
+
 export default router

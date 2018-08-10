@@ -15,6 +15,7 @@ const initialState = {
     error: null,
     items: [],
     fetching: false,
+    sending: false,
     fetched: false,
     sent: false
 }

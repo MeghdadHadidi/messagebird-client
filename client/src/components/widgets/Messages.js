@@ -13,7 +13,7 @@ class MessagesWidget extends Component {
     render() {
         const { messageCount, loading } = this.props;
         return (
-            <Widget /*style={{width: '150px' }}*/ className="messages-widget" icon="List" loading={loading} title="Messages" color="#666" render={
+            <Widget style={{width: '300px' }} className="messages-widget" icon="List" loading={loading} title="Messages" color="#666" render={
                 () => {
                     return(
                         <React.Fragment>
@@ -25,11 +25,15 @@ class MessagesWidget extends Component {
                                     return(
                                         <ul>
                                             { props.messages.map((message, key) => {
-                                                return <li key={key}>
-                                                    {message.body} 
-                                                    {message.direction === 'mt' ? ' > ' : ' < '} 
-                                                    <span>{message.recipients && message.recipients.items.length && message.recipients.items[0].recipient}</span>
-                                                </li>
+                                                if(key < 5){
+                                                    return <li key={key}>
+                                                        <div>{message.body}</div>
+                                                        {message.direction === 'mt' ? ' > ' : ' < '} 
+                                                        <span>{message.recipients && message.recipients.items.length && message.recipients.items[0].recipient}</span>
+                                                    </li>
+                                                }
+                                                
+                                                return ''
                                             }) }
                                         </ul>
                                     )

@@ -46,6 +46,42 @@ function Messagebird(accessKey) {
             send(message){
                 return axiosInstance.post('/messages', message)
             }
+        },
+
+        contacts: {
+            /**
+             * Get contacts service method
+             * @returns {Promise<any>}
+             * @param {id} #Optional
+             */
+
+            get(id){
+                if(!id){
+                    return axiosInstance.get('/contacts')
+                }
+
+                else {
+                    return axiosInstance.get(`/contacts/${id}`)
+                }
+            },
+
+            /**
+             * Adds a new contact 
+             * @returns {Promise<any>}
+             * @param {Object}
+             */
+            add(message){
+                return axiosInstance.post('/contacts', message)
+            },
+
+            /**
+             * Removes contact 
+             * @returns {Promise<any>}
+             * @param {Object}
+             */
+            delete(id){
+                return axiosInstance.delete(`/contacts/${id}`, id)
+            }
         }
     }
 }

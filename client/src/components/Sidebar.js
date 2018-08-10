@@ -21,7 +21,18 @@ class Sidebar extends Component {
             <TiHome size="1.3em" className="menu-item-icon" />
             <span>Dashboard</span>
           </NavItem>          
-          <NavItem title="Contacts" to="/contacts">
+          <NavItem title="Contacts" to="/contacts" activeClassName="active open" render={() => {
+            return(
+              <ul>              
+                <NavItem exact activeClassName="active" to="/contacts">
+                  <span>Contact List</span>
+                </NavItem>              
+                <NavItem activeClassName="active" to="/contacts/add">
+                  <span>Add Contact</span>
+                </NavItem>
+              </ul>
+            )
+          }}>
             <TiContacts size="1.3em" className="menu-item-icon" />
             <span>Contacts</span>
           </NavItem>          
