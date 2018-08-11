@@ -1,1 +1,1 @@
-web: nodemon --ignore 'client/' --exec npm run babel-node -- ./index.js
+web: babel-node ./index.js
