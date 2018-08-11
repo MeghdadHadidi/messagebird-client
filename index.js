@@ -19,7 +19,7 @@ app.use('/api', routes)
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('*', (req, res, next) => {
-    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
 });
 
 app.listen(PORT, () => console.log('Server is listening on 4000'))
