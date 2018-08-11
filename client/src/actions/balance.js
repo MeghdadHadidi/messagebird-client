@@ -5,7 +5,7 @@ import iziToast from 'izitoast'
 export const getBalance = () => {
     return dispatch => {
         dispatch({ type: GET_BALANCE_START })
-        return axios.get('http://localhost:4000/api/balance')
+        return axios.get('/api/balance')
             .then(({ data }) => {
                 dispatch({ type: GET_BALANCE_END })
                 if(data.success && data.content.amount){

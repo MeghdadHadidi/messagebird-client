@@ -5,7 +5,7 @@ import iziToast from 'izitoast'
 export const getContacts = () => {
     return dispatch => {
         dispatch({ type: GET_CONTACTS_START })
-        return axios.get('http://localhost:4000/api/contacts')
+        return axios.get('/api/contacts')
             .then(({ data }) => {
                 dispatch({ type: GET_CONTACTS_END })
                 dispatch({
@@ -31,7 +31,7 @@ export const getContacts = () => {
 export const getcontactDetail = (id) => {
     return dispatch => {
         dispatch({ type: GET_CONTACTS_START })
-        return axios.get('http://localhost:4000/api/contacts', id)
+        return axios.get('/api/contacts', id)
             .then(({ data }) => {
                 dispatch({ type: GET_CONTACTS_END })
                 dispatch({ 

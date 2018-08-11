@@ -14,7 +14,7 @@ import iziToast from 'izitoast'
 export const getMessages = () => {
     return dispatch => {
         dispatch({ type: GET_MESSAGES_START })
-        return axios.get('http://localhost:4000/api/messages')
+        return axios.get('/api/messages')
             .then(({ data }) => {
                 dispatch({ type: GET_MESSAGES_END })
                 dispatch({
@@ -40,7 +40,7 @@ export const getMessages = () => {
 export const sendMessage = (data) => {
     return dispatch => {
         dispatch({ type: SEND_MESSAGES_START });
-        return axios.post('http://localhost:4000/api/messages', {
+        return axios.post('/api/messages', {
                 ...data,
                 originator: 'MessageBird'
             })
@@ -84,7 +84,7 @@ export const sendMessage = (data) => {
 
 export const getMessageDetail = (id) => {
     return dispatch => {
-        return axios.get(`http://localhost:4000/api/messages/${id}`)
+        return axios.get(`/api/messages/${id}`)
             .then(({ data }) => {
                 if(data.success && data.content){
                     this.setState({
