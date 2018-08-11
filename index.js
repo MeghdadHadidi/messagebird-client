@@ -20,7 +20,7 @@ app.use('/api', routes)
 // match one above, send back React's index.html file.
 app.get('*', (req, res, next) => {
     console.log(__dirname);
-    res.sendFile(path.join(__dirname + '/client/build/index.html'));
+    res.sendFile(path.join('/client/build/index.html'));
 });
 
 app.listen(PORT, () => console.log('Server is listening on 4000'))
