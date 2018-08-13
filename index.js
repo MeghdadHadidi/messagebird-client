@@ -12,7 +12,7 @@ const PORT = normalizePort(process.env.PORT || 4000)
 const app = express()
 const dev = app.get('env') !== 'production'
 
-if(!dev){
+if(!dev){  
     app.disable('x-powered-by')
     app.use(morgan('common'))
     app.use(compression())
